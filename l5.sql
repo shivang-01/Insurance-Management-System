@@ -63,8 +63,8 @@ DELIMITER ;
 -- Table structure for table `admin`
 --
 
-DROP TABLE IF EXISTS `admin`;
-CREATE TABLE `admin` (
+-- DROP TABLE IF EXISTS `admin`;
+ CREATE TABLE `admin` (
   `Admin_id` int(5) UNSIGNED ZEROFILL NOT NULL CHECK (octet_length(`Admin_id`) = 5),
   `Branch_id` int(5) UNSIGNED ZEROFILL NOT NULL,
   `Name` varchar(30) NOT NULL,
@@ -75,16 +75,13 @@ CREATE TABLE `admin` (
   `Designation` varchar(15) DEFAULT NULL,
   `City` varchar(50) DEFAULT NULL,
   `Password` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4; 
 
 --
 -- Dumping data for table `admin`
 --
 
-INSERT INTO `admin` (`Admin_id`, `Branch_id`, `Name`, `Mobile_no`, `Email_id`, `DOB`, `Designation`, `City`, `Password`) VALUES
-(10100, 41725, 'b', 9428363267, 'abc@ac.x', '0000-00-00', 'abc', 'zyx', '$2y$10$MqdJAcKBvX8uRBDIEM8k7O7mAAhgCyDNMm63rEDo8jXCoQl2VZvku'),
-(10101, 41725, 'a', 9909564613, 'abc@ac.x', '2020-06-25', 'abc', 'zyx', '$2y$10$Nz5RuVAtjatrsivgllFTa.tqQvg/p6yygQgGkU93yHADH49Pj1w2G'),
-(12345, 41725, 'Admin', 0, NULL, '0000-00-00', NULL, NULL, '$2y$10$8ZZ9sM/2pxfFurpQmE4Zzur0FrXguiU/jYAiDX6rKP1ZaUv.3MN0u');
+
 
 -- --------------------------------------------------------
 
@@ -92,8 +89,8 @@ INSERT INTO `admin` (`Admin_id`, `Branch_id`, `Name`, `Mobile_no`, `Email_id`, `
 -- Table structure for table `agent`
 --
 
-DROP TABLE IF EXISTS `agent`;
-CREATE TABLE `agent` (
+-- DROP TABLE IF EXISTS `agent`;
+ CREATE TABLE `agent` (
   `Agency_code` int(7) UNSIGNED ZEROFILL NOT NULL CHECK (octet_length(`Agency_code`) = 7),
   `Admin_id` int(5) UNSIGNED ZEROFILL NOT NULL,
   `Branch_id` int(5) UNSIGNED ZEROFILL NOT NULL,
@@ -105,16 +102,12 @@ CREATE TABLE `agent` (
   `Designation` varchar(15) DEFAULT NULL,
   `City` varchar(50) DEFAULT NULL,
   `Password` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4; 
 
 --
 -- Dumping data for table `agent`
 --
 
-INSERT INTO `agent` (`Agency_code`, `Admin_id`, `Branch_id`, `Name`, `Mobile_no`, `Email_id`, `DOB`, `Designation`, `City`, `Password`) VALUES
-(1111111, 12345, 41725, 'a', 9909564738, 'abc@ac.x', '2001-02-10', 'abc', 'zyx', '$2y$10$FicQQ20HObsHEZtjqrYOsOCMLDul9Zu7RGUldjpW/UcxfMqoVPngK'),
-(1234321, 12345, 41725, 'x', 9898767600, 'abc@ac.x', '2020-06-04', 'abc', 'zyx', '$2y$10$RSS7McEPdiFy339lA6sQrenk1KbRMOtdK/QUfgQ1VZ2cJMlty31Ua'),
-(1234567, 12345, 41725, 'x', 9909564613, 'abc@ac.x', '2020-06-23', 'abc', 'zyx', '$2y$10$a9lBa1Qm48gWhGhPcnrZpudTrg/PFa1cAMA9HIIRL5h0/KiJk2gTm');
 
 -- --------------------------------------------------------
 
@@ -136,8 +129,8 @@ CREATE TABLE `payment_record` (
 -- Table structure for table `plan`
 --
 
-DROP TABLE IF EXISTS `plan`;
-CREATE TABLE `plan` (
+-- DROP TABLE IF EXISTS `plan`;
+ CREATE TABLE `plan` (
   `Plan_no` int(3) UNSIGNED NOT NULL CHECK (octet_length(`Plan_no`) = 3),
   `Name` varchar(15) DEFAULT NULL,
   `MMA` int(3) NOT NULL,
@@ -159,15 +152,12 @@ CREATE TABLE `plan` (
   `P2` int(11) DEFAULT NULL,
   `P3` int(11) DEFAULT NULL,
   `P4` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4; 
 
 --
 -- Dumping data for table `plan`
 --
 
-INSERT INTO `plan` (`Plan_no`, `Name`, `MMA`, `min_SA`, `max_SA`, `min_age`, `max_age`, `MODE_YEARLY`, `MODE_HALFLY`, `MODE_QUARTELY`, `MODE_MONTHLY`, `MODE_SINGLE`, `Type_term`, `T1`, `T2`, `T3`, `T4`, `P1`, `P2`, `P3`, `P4`) VALUES
-(914, 'New Endowment', 75, 100000, NULL, 8, 55, 1, 1, 1, 1, 0, 0, 12, 35, NULL, NULL, NULL, NULL, NULL, NULL),
-(915, 'JeevanAnand', 75, 0, 0, 18, 50, 1, 1, 1, 1, NULL, 0, 15, 35, 0, 0, 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -175,8 +165,8 @@ INSERT INTO `plan` (`Plan_no`, `Name`, `MMA`, `min_SA`, `max_SA`, `min_age`, `ma
 -- Table structure for table `policy`
 --
 
-DROP TABLE IF EXISTS `policy`;
-CREATE TABLE `policy` (
+-- DROP TABLE IF EXISTS `policy`;
+ CREATE TABLE `policy` (
   `Policy_no` int(9) UNSIGNED NOT NULL CHECK (octet_length(`Policy_no`) = 9),
   `Plan_no` int(3) UNSIGNED NOT NULL,
   `Agency_code` int(7) UNSIGNED ZEROFILL NOT NULL,
@@ -188,15 +178,13 @@ CREATE TABLE `policy` (
   `Status` tinyint(1) NOT NULL DEFAULT 1,
   `Term` int(11) NOT NULL,
   `PPT` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4; 
 
 --
 -- Dumping data for table `policy`
 --
 
-INSERT INTO `policy` (`Policy_no`, `Plan_no`, `Agency_code`, `Premium`, `DOC`, `FUP`, `Mode`, `SA`, `Status`, `Term`, `PPT`) VALUES
-(111111111, 914, 1234567, 2256, '2020-06-25', '2022-06-25', 'yearly', 100000, 1, 13, 13),
-(121111111, 914, 1234567, 1345, '2020-05-21', '2021-05-21', 'yearly', 200000, 1, 19, 19);
+
 
 -- --------------------------------------------------------
 
@@ -227,9 +215,6 @@ CREATE TABLE `policy_holder` (
 -- Dumping data for table `policy_holder`
 --
 
-INSERT INTO `policy_holder` (`Policy_no`, `Name`, `Mobile_no`, `Email_id`, `City`, `Colony`, `House_no`, `Pincode`, `Nominee_name`, `Nominee_relation`, `Gender`, `Occupation`, `DOB`, `Edu_ql`) VALUES
-(111111111, 'x', 9687586989, 'abc@ac.x', 'a', 'a', '1', 123456, 'a', 'Parent', 'MALE', 'a', '1996-01-02', 'a'),
-(121111111, 'x', 9909564632, 'abc@ac.x', 'a', 'a', '1', 123456, 'a', 'Parent', 'MALE', 'a', '2020-01-03', 'a');
 
 --
 -- Indexes for dumped tables
